@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.djsystem.controllers.MainController" spacing="10" style="-fx-background-color: #2b2b2b;">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <MenuBar style="-fx-background-color: #3c3f41;">
+        <Menu text="File">
+            <MenuItem text="Import Music"/>
+            <MenuItem text="Export Playlist"/>
+            <SeparatorMenuItem/>
+            <MenuItem text="Exit"/>
+        </Menu>
+        <Menu text="View">
+            <MenuItem text="Library"/>
+            <MenuItem text="Effects"/>
+            <MenuItem text="Equalizer"/>
+        </Menu>
+        <Menu text="Help">
+            <MenuItem text="About"/>
+        </Menu>
+    </MenuBar>
+
+    <SplitPane VBox.vgrow="ALWAYS">
+        <VBox spacing="5">
+            <Label text="Music Library" style="-fx-text-fill: white;"/>
+            <TableView fx:id="libraryTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn text="Title" fx:id="titleColumn"/>
+                    <TableColumn text="Artist" fx:id="artistColumn"/>
+                    <TableColumn text="Duration" fx:id="durationColumn"/>
+                    <TableColumn text="BPM" fx:id="bpmColumn"/>
+                </columns>
+            </TableView>
+        </VBox>
+
+        <VBox spacing="5">
+            <HBox spacing="10" alignment="CENTER">
+                <VBox alignment="CENTER" spacing="5" style="-fx-border-color: #4CAF50; -fx-border-radius: 5; -fx-padding: 10;">
+                    <Label text="Deck A" style="-fx-text-fill: #4CAF50;"/>
+                    <Slider fx:id="volumeA" orientation="VERTICAL"/>
+                    <Button text="Load Track" style="-fx-background-color: #4CAF50;"/>
+                    <Button text="Play/Pause" style="-fx-background-color: #4CAF50;"/>
+                    <Slider fx:id="speedA"/>
+                    <Label text="Speed" style="-fx-text-fill: white;"/>
+                </VBox>
+
+                <VBox alignment="CENTER" spacing="5">
+                    <Slider fx:id="crossFader" orientation="HORIZONTAL"/>
+                    <Label text="Cross Fader" style="-fx-text-fill: white;"/>
+                </VBox>
+
+                <VBox alignment="CENTER" spacing="5" style="-fx-border-color: #2196F3; -fx-border-radius: 5; -fx-padding: 10;">
+                    <Label text="Deck B" style="-fx-text-fill: #2196F3;"/>
+                    <Slider fx:id="volumeB" orientation="VERTICAL"/>
+                    <Button text="Load Track" style="-fx-background-color: #2196F3;"/>
+                    <Button text="Play/Pause" style="-fx-background-color: #2196F3;"/>
+                    <Slider fx:id="speedB"/>
+                    <Label text="Speed" style="-fx-text-fill: white;"/>
+                </VBox>
+            </HBox>
+
+            <VBox spacing="5">
+                <Label text="Effects" style="-fx-text-fill: white;"/>
+                <HBox spacing="10">
+                    <Button text="Echo" style="-fx-background-color: #9C27B0;"/>
+                    <Button text="Flanger" style="-fx-background-color: #9C27B0;"/>
+                    <Button text="Reverb" style="-fx-background-color: #9C27B0;"/>
+                    <Button text="Loop" style="-fx-background-color: #9C27B0;"/>
+                </HBox>
+            </VBox>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Playlist" style="-fx-text-fill: white;"/>
+            <TableView fx:id="playlistTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn text="#" fx:id="orderColumn"/>
+                    <TableColumn text="Title" fx:id="playlistTitleColumn"/>
+                    <TableColumn text="Duration" fx:id="playlistDurationColumn"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </SplitPane>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Status:" style="-fx-text-fill: white;"/>
+        <Text fx:id="statusText" style="-fx-fill: white;" text="Ready"/>
+    </HBox>
+</VBox>
